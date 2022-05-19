@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'frontend';
+  session = this.auth.session;
+
+  constructor(private readonly auth: AuthService) { }
+
+  ngOnInit() {
+    this.auth.authChanges((_, session) => this.session = session);
+  }
 }

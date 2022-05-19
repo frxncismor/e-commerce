@@ -1,0 +1,24 @@
+<div class="row flex flex-center">
+    <form class="col-6 form-widget">
+      <h1 class="header">Inicio de sesión</h1>
+      <p class="description">Inicia sesión via enlace mágico con tu email debajo</p>
+      <div>
+        <input
+          #input
+          class="inputField"
+          type="email"
+          placeholder="Tu email"
+        />
+      </div>
+      <div>
+        <button
+          type="submit"
+          (click)="handleLogin(input.value)"
+        class="button block"
+        [disabled]="loading"
+        >
+        {{loading ? 'Cargando' : 'Enviar enlace mágico'}}
+        </button>
+      </div>
+    </form>
+  </div>

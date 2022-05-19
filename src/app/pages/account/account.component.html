@@ -1,0 +1,53 @@
+<div class="form-widget">
+    <app-avatar
+      [avatarUrl]="this.profile?.avatar_url"
+      (upload)="updateProfile(first_name.value, last_name.value, address.value, $event)">
+    </app-avatar>
+    <div>
+      <label for="email">Email</label>
+      <input id="email" type="text" [value]="session?.user?.email" disabled/>
+    </div>
+    <div>
+      <label for="first_name">Nombre(s)</label>
+      <input
+        #first_name
+        id="first_name"
+        type="text"
+        [value]="profile?.first_name"
+      />
+    </div>
+    <div>
+      <label for="last_name">Apellido</label>
+      <input
+        #last_name
+        id="last_name"
+        type="text"
+        [value]="profile?.last_name"
+      />
+    </div>
+    <div>
+      <label for="address">Dirección</label>
+      <input
+        #address
+        id="address"
+        type="text"
+        [value]="profile?.address"
+      />
+    </div>
+
+    <div>
+      <button
+        class="button block primary"
+        (click)="updateProfile(first_name.value, last_name.value, address.value, this.profile?.avatar_url)"
+        [disabled]="loading"
+      >
+        {{loading ? 'Loading ...' : 'Update'}}
+      </button>
+    </div>
+
+    <div>
+      <button class="button block" (click)="signOut()">
+        Sign Out
+      </button>
+    </div>
+  </div>
